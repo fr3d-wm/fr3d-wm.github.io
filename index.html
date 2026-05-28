@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Future Dynamic 3D Reconstruction: A 3D World Model with Disentangled Ego-Motion, ICML 2026">
+  <meta name="tldr" content="A world model for dynamic 3D reconstruction operating on a pre-trained, feed-forward reconstruction model's latent space.">
+        <meta name="keywords" content="3d world model, 3d scene prediction, 3d dynamic reconstruction, self-supervised, ICML 2026">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Future Dynamic 3D Reconstruction: A 3D World Model with Disentangled Ego-Motion</title>
+  
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PYXS918KCT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PYXS918KCT');
+</script>
+
+  <!--link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet"-->
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+ 
+   <link rel="stylesheet" href="./static/css/fonts.css">
+
+  <!--link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css"-->
+  <!--link rel="stylesheet" href="./static/css/fontawesome.all.min.css"-->
+  <!--link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"-->
+  <link rel="stylesheet"
+        href="./static/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="./static/js/jquery.min.js"></script>
+  <!--script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script-->
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <!--script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script-->
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body" style="padding-top:6rem">
+  <!-- style="background-color: rgb(240,240,240);"-->
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Future Dynamic 3D Reconstruction:<br>A 3D World Model with<br>Disentangled Ego-Motion</h1>
+
+          <div class="is-size-4 publication-authors">
+            <span class="author-block" style="padding-top:1.5rem; padding-bottom:1rem;"><b>ICML 2026</b></span>
+          </div>
+          
+          <div class="is-size-5 publication-authors" style="padding-bottom:1rem">
+            <span class="author-block">
+              <a href="https://www.cs.cit.tum.de/camp/members/nils-morbitzer/" target="_blank" rel="noopener noreferrer">Nils Morbitzer</a><sup>*,1,2</sup>
+	    </span>
+            <span class="author-block">
+              <a href="" target="_blank" rel="noopener noreferrer">Jonathan Evers</a><sup>*,1,3</sup>
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=_yXe7u4AAAAJ&hl=de" target="_blank" rel="noopener noreferrer">Artem Savkin</a><sup>3</sup>
+            </span>
+            <span class="author-block">
+              <a href="https://dblp.org/pid/59/3884.html" target="_blank" rel="noopener noreferrer">Thomas Stauner</a><sup>3</sup>
+            </span>
+            <span class="author-block">
+              <a href="https://www.cs.cit.tum.de/camp/members/cv-nassir-navab/nassir-navab/" target="_blank" rel="noopener noreferrer">Nassir Navab</a><sup>1,2</sup>
+            </span>
+            <span class="author-block">
+              <a href="https://federicotombari.github.io" target="_blank" rel="noopener noreferrer">Federico Tombari</a><sup>1,2</sup>
+            </span>
+            <span class="author-block">
+              <a href="https://www.cs.cit.tum.de/camp/members/stefano-gasperini/" target="_blank" rel="noopener noreferrer">Stefano Gasperini</a><sup>1,2,4</sup>
+	          </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup> <a href="https://www.cs.cit.tum.de/camp/start" target="_blank" rel="noopener noreferrer">TUM</a></span>
+            <span class="author-block"><sup>2</sup> <a href="https://mcml.ai" target="_blank" rel="noopener noreferrer">MCML</a></span>
+            <span class="author-block"><sup>3</sup> <a href="https://www.bmw.de/de/index.html" target="_blank" rel="noopener noreferrer">BMW Group</a></span>
+            <span class="author-block"><sup>4</sup> <a href="https://www.visualais.io" target="_blank" rel="noopener noreferrer">Visualais</a></span>
+          </div>
+          
+          <div class="is-size-5 publication-authors" style="padding-bottom:1rem">
+            <span class="author-block"><sup>*</sup> Equal contribution.</span>
+          </div>
+            
+          <div class="column has-text-centered">
+            <div class="publication-links mt-5">
+              <!-- arXiv -->
+              <span class="link-block">
+                <a href="" class="button is-normal is-rounded is-light is-disabled" aria-disabled">
+                  <span class="icon"><i class="ai ai-arxiv"></i></span>
+                  <span>arXiv (coming soon)</span>
+                </a>
+              </span>
+
+              <!-- Paper -->
+              <span class="link-block">
+                <a href="https://icml.cc/virtual/2026/poster/60566" class="button is-normal is-rounded is-light is-disabled" aria-disabled">
+                  <span class="icon"><svg class="svg-inline--fa fa-file-pdf fa-w-12" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="file-pdf" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg=""><path fill="currentColor" d="M181.9 256.1c-5-16-4.9-46.9-2-46.9 8.4 0 7.6 36.9 2 46.9zm-1.7 47.2c-7.7 20.2-17.3 43.3-28.4 62.7 18.3-7 39-17.2 62.9-21.9-12.7-9.6-24.9-23.4-34.5-40.8zM86.1 428.1c0 .8 13.2-5.4 34.9-40.2-6.7 6.3-29.1 24.5-34.9 40.2zM248 160h136v328c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V24C0 10.7 10.7 0 24 0h200v136c0 13.2 10.8 24 24 24zm-8 171.8c-20-12.2-33.3-29-42.7-53.8 4.5-18.5 11.6-46.6 6.2-64.2-4.7-29.4-42.4-26.5-47.8-6.8-5 18.3-.4 44.1 8.1 77-11.6 27.6-28.7 64.6-40.8 85.8-.1 0-.1.1-.2.1-27.1 13.9-73.6 44.5-54.5 68 5.6 6.9 16 10 21.5 10 17.9 0 35.7-18 61.1-61.8 25.8-8.5 54.1-19.1 79-23.2 21.7 11.8 47.1 19.5 64 19.5 29.2 0 31.2-32 19.7-43.4-13.9-13.6-54.3-9.7-73.6-7.2zM377 105L279 7c-4.5-4.5-10.6-7-17-7h-6v128h128v-6.1c0-6.3-2.5-12.4-7-16.9zm-74.1 255.3c4.1-2.7-2.5-11.9-42.8-9 37.1 15.8 42.8 9 42.8 9z"></path></svg><!-- <i class="fas fa-file-pdf"></i> Font Awesome fontawesome.com --></span>
+                  <span>ICML Paper</span>
+                </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Put sth like an animation as teaser here. -->
+<section class="hero teaser">
+    <div class="container fluid">
+        <div class="hero-body is-max-widescreen">
+            <div class="columns is-centered">
+                <div class="column is-centered is-full">
+                    <div class="notification is-centered is-info is-rounded"
+                        style="text-align: center; padding-bottom: 5px; padding-top: 5px; background-color: #ffffff;">
+                        <h6 style="text-align: center; color:rgb(0, 0, 0); font-size: 18px">
+                            <strong>TL;DR:</strong> A world model for dynamic 3D reconstruction operating on a pre-trained, feed-forward reconstruction model's latent space.
+                        </h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="container is-max-desktop">
+    <!--/ Abstract. -->
+    <div class="columns is-centered has-text-justified">
+      <div class="column is-four-fifths" style="padding-bottom:3rem">
+        <h2 class="title is-3" style="margin-bottom:0">Motivation</h2>
+        <div class="">
+          <img src="images/teaser.png"></img>
+        </div>
+        <p>
+Forecasting the evolution of dynamic environments is crucial for autonomous agents.
+While generative world models have recently achieved high photorealism in 2D video synthesis, by mixing within the image plane ego-motion and environmental dynamics, they exhibit physical inconsistencies, such as morphing or vanishing objects, especially over long time horizons.
+</br></br>
+In this paper, we propose FR3D, a world model that predicts a persistent 3D latent representation for <b>future dynamic 3D reconstruction</b>.
+      </div>
+    </div>
+    <div class="columns is-centered has-text-justified">
+      <div class="column is-four-fifths" style="padding-bottom:3rem">
+        <h2 class="title is-3" style="margin-bottom:1rem">Method</h2>
+        <div class="" style="margin-bottom:1rem">
+          <img src="images/framework.png"></img>
+        </div>
+        <p>
+
+Unlike prior works that treat the world as a sequence of image-based features, FR3D explicitly decouples the 3D evolution of the scene from the agent's trajectory, treating the inferred ego-motion as a latent proxy for action.
+This disentanglement resolves the ambiguities between self-motion and world-motion, ensuring geometric consistency into the future.
+Furthermore, we introduce a teacher-student distillation strategy that leverages the spatial "common sense" of off-the-shelf foundation models, leading to robust zero-shot generalization.
+Extensive experiments demonstrate FR3D's strong performance for future dynamic 3D reconstruction from monocular observations across multiple datasets, even 2 seconds into the future.
+        </p>
+      </div>
+    </div>
+    <div class="columns is-centered has-text-justified">
+      <div class="column is-four-fifths" style="padding-bottom:3rem">
+        <h2 class="title is-3" style="margin-bottom:0">Results</h2>
+        <div class="">
+          <img src="images/qualitatives.png"></img>
+        </div>
+        <p>
+With FR3D, we introduce the task of future dynamic 3D reconstruction from monocular observations, leading to a new paradigm for 3D world models.
+We show that disentangling ego-motion from environmental dynamics enables significantly more stable long-horizon predictions, even 2 seconds ahead.
+Remarkably, the proposed FR3D achieves strong zero-shot performance by learning how to operate on the latent space of a pre-trained, feed-forward 3D reconstruction model.
+</br></br>
+The figure above shows qualitative zero-shot results of FR3D on the nuScenes and KITTI dataset, with two different challenging dynamic scenes for each dataset.
+Significant domain shifts occur between Waymo (where FR3D forecasting model is trained on) and the two datasets here. For example, the aspect ratio of the KITTI inputs is significantly wider than that of Waymo (see figure at the top of the project page). Yet, all scenes show remarkable forecasting performance by FR3D, closely matching its oracle model.
+The scene at the top left depicts a particularly interesting scenario, where a white car is performing a right turn, while the ego vehicle is turning left onto the same street. FR3D successfully forecasts the ego-motion and the trajectory of the other traffic participant, despite being conditioned only on 4 context images. This shows the benefits of our disentanglement between ego-motion and world-motion, with our model handling the challenging motions independently. The effectiveness of this strategy is also visible in the Waymo scene at the top of our project page, with traffic plausibly forecasted to head in opposite directions and at different speeds.
+</br></br>
+In our <a href="https://icml.cc/virtual/2026/poster/60566" target="_blank" rel="noopener noreferrer">ICML paper</a>, we demonstrate the effectiveness of FR3D for short-, mid-, and long-term horizons. Throughout extensive experiments on the Waymo, nuScenes and KITTI datasets, FR3D significantly outperforms all of our baseline models for future 3D reconstruction (i.e. forecasting camera pose and depth).
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" style="padding-top:1.5rem;padding-bottom:6rem;" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre style="background-color: rgb(240,240,240);"><code>@inproceedings{morbitzer_evers2026fr3d,
+  title={Future Dynamic 3D Reconstruction: A 3D World Model with Disentangled Ego-Motion},
+  author={Morbitzer, Nils and Evers, Jonathan and Savkin, Artem and Stauner, Thomas and Navab, Nassir and Tombari, Federico and Gasperini, Stefano},
+  booktitle={ICML},
+  year={2026},
+}
+</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer" style="padding-bottom:3rem">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8 has-text-justified">
+        <div class="content">
+          <p>
+            This website was adapted from <a href"https://nerfies.github.io" target="_blank" rel="noopener noreferrer">Nerfies</a> and is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            You can use the <a
+              href="https://github.com/fr3d-wm/fr3d.github.io">source code of this website</a>, we ask that you link back to this page in the footer. Please also remember to remove the analytics code in the website's header.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- GDPR Banner -->
+<div id="gdpr-banner">
+    This page is hosted on GitHub Pages. For analytics and security purposes, GitHub may collect some of your data, such as your IP address and user agent. The data may be transferred to servers outside the European Economic Area. This page does not control GitHub's data collection and processing activities. By using this webpage, you consent to any data collection and processing by GitHub under <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: rgb(201, 0, 201);" onmouseover="style='text-decoration:underline; color: rgb(255, 214, 0)'" onmouseout="style='text-decoration:none;color: rgb(201, 0, 201)'" target="_blank">their terms and privacy policy</a>. This page uses <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: rgb(201, 0, 201);" onmouseover="style='text-decoration:underline; color: rgb(255, 214, 0)'" onmouseout="style='text-decoration:none;color: rgb(201, 0, 201)'" target="_blank">Google Analytics</a> to assess the community's interest in this work.
+    <button id="accept-gdpr">I agree</button>
+  </div>
+  
+<script>
+    // JavaScript to handle the banner
+    document.addEventListener("DOMContentLoaded", function () {
+      const gdprBanner = document.getElementById("gdpr-banner");
+      const acceptButton = document.getElementById("accept-gdpr");
+
+      // Check if the user has already accepted
+      if (localStorage.getItem("gdprAccepted") === "true") {
+        gdprBanner.style.display = "none";
+      }
+
+      // When the user clicks "Accept", hide the banner and set the localStorage item
+      acceptButton.addEventListener("click", function () {
+        gdprBanner.style.display = "none";
+        localStorage.setItem("gdprAccepted", "true");
+      });
+    });
+  </script>
+
+</body>
+</html>
