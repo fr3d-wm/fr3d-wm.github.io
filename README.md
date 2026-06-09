@@ -1,6 +1,6 @@
 # FR3D - ICML 2026
 
-This is the repository that contains source code for the [FR3D website](https://fr3d-wm.github.io).
+This is the repository that contains source code for the [FR3D website](https://fr3d-wm.github.io). The source code is heavily based on the [CUT3R website](https://github.com/CUT3R/CUT3R.github.io/tree/master).
 
 If you find FR3D useful for your work, please cite:
 ```
