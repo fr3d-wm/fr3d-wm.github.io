@@ -702,7 +702,7 @@
                 <h2 class="title is-3">Interactive Results</h2>
                 <p>
                     Our unified framework tackles future dynamic 3D reconstruction on several outdoor datasets (Waymo, KITTI, nuScenes). Select each tab below to explore the results for
-                    each dataset.
+                    each dataset. Since our forecasting model does not predict RGB, we augment the point clouds (context and future) with the RGB frames.
                 </p>
                 <nav aria-label="Interactive result datasets">
                     <ul role="tablist">
@@ -925,7 +925,7 @@
                     <h2 class="title is-3">Quantitative Results</h2>
                     <div class="content has-text-centered">
                         <p>
-                            FR3D delivers strong results for depth and pose forecasting, also at long time horizons (2 seconds and beyond).
+                            FR3D delivers strong results for depth and pose forecasting, also at long time horizons.
                         </p>
                     </div>
                     <div class="content has-text-centered">
