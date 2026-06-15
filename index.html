@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -235,7 +235,7 @@
             margin: 0;
         }
 
-        nav ul li a {
+        nav ul li button {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -255,17 +255,17 @@
         }
 
 
-        nav ul li a:hover {
+        nav ul li button:hover {
             background-color: #e4e4e4;
             transform: scale(1.05);
         }
 
-        nav ul li a:active {
+        nav ul li button:active {
             background-color: #d3d3d3;
             transform: scale(0.95);
         }
 
-        nav ul li a.active {
+        nav ul li button.active {
             background-color: #cccccc; /* Change color to indicate active tab */
             color: #000000; /* Optional: Change text color if needed */
         }
@@ -542,7 +542,7 @@
           <div class="columns is-centered">
             <div class="column has-text-centered">
                 <h1 class="title is-2 publication-title" style="margin-bottom:0rem">
-                    <img src="https://fr3d-wm.github.io/static/images/icon.png" alt="ICON"
+                    <img src="https://fr3d-wm.github.io/static/images/icon.png" alt="FR3D logo"
                         style="max-width: 96px; vertical-align: middle;">
                     <strong>Future Dynamic 3D Reconstruction:<br>A 3D World Model with Disentangled Ego-Motion</strong>
                 </h1>
@@ -626,7 +626,8 @@
                             </h6>
                         </div>
                         <div>
-                            <img src="https://fr3d-wm.github.io/static/images/teaser.png" alt="Reconstruction"
+                            <img src="https://fr3d-wm.github.io/static/images/teaser.png"
+                                alt="Overview of FR3D future dynamic 3D reconstruction results"
                                 class="blend-img-background center-image" width="80%" loading="lazy" />
                         </div>
                     </div>
@@ -670,6 +671,7 @@
                     <div class="content has-text-centered">
                         <div>
                             <img src="https://fr3d-wm.github.io/static/images/framework.png"
+                                alt="Overview of the FR3D architecture and forecasting pipeline"
                                 class="blend-img-background center-image" width="80%" loading="lazy" />
                         </div>
                         <br>
@@ -702,30 +704,28 @@
                     Our unified framework tackles future dynamic 3D reconstruction on several outdoor datasets (Waymo, KITTI, nuScenes). Select each tab below to explore the results for
                     each dataset.
                 </p>
-                <nav>
-                    <ul>
-                        <li><a id="nav1" href="javascript:void(0);" onclick="showSection('waymo');setActive('nav1');">Waymo</a></li>
-                        <li><a id="nav2" href="javascript:void(0);" onclick="showSection('kitti');setActive('nav2');">KITTI</a></li>
-                        <li><a id="nav3" href="javascript:void(0);" onclick="showSection('nuscenes');setActive('nav3');">nuScenes</a></li>
+                <nav aria-label="Interactive result datasets">
+                    <ul role="tablist">
+                        <li><button id="nav1" type="button" role="tab" aria-controls="waymo" aria-selected="true" class="active" onclick="showSection('waymo');setActive('nav1');">Waymo</button></li>
+                        <li><button id="nav2" type="button" role="tab" aria-controls="kitti" aria-selected="false" onclick="showSection('kitti');setActive('nav2');">KITTI</button></li>
+                        <li><button id="nav3" type="button" role="tab" aria-controls="nuscenes" aria-selected="false" onclick="showSection('nuscenes');setActive('nav3');">nuScenes</button></li>
                     </ul>
                 </nav>
             </div>
             <script>
                 function setActive(activeId) {
-                    // Remove 'active' class from all links
-                    document.querySelectorAll('nav ul li a').forEach(function(link) {
-                        link.classList.remove('active');
+                    document.querySelectorAll('[role="tab"]').forEach(function(tab) {
+                        const isActive = tab.id === activeId;
+                        tab.classList.toggle('active', isActive);
+                        tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
                     });
-                
-                    // Add 'active' class to the clicked link
-                    document.getElementById(activeId).classList.add('active');
                 }
                 </script>
         </div>
     </div>
     <script defer src="./static/js/nav.js"></script>
 
-    <section id="waymo" class="section dynamic-section">
+    <section id="waymo" class="section dynamic-section" role="tabpanel" aria-labelledby="nav1">
         <div class="container is-max-desktop">
             <div class="columns is-centered has-text-centered">
                 <div class="column is-full  panel-style">
@@ -734,7 +734,7 @@
                         Our method can forecast how dynamic 3D scenes evolve in a feed-forward manner.
                     </p>
                     <br>
-                    <div id="wrapper" style="
+                    <div id="waymo-wrapper" style="
               display: flex;
               flex-wrap: nowrap;
               justify-content: center;
@@ -742,7 +742,7 @@
               gap: 2em;
             ">
                         <div class="iframe-container">
-                        <iframe class="vframe"
+                        <iframe class="vframe" title="Interactive Waymo 3D reconstruction"
                             src="https://fr3d-wm.github.io/build/?playbackPath=/recordings/waymo1.viser&initialCameraPosition=0,0,-3&initialCameraLookAt=0,0,0&initialCameraUp=0,-1,0&baseSpeed=0.8"
                             loading="lazy"></iframe>
                             <button onclick="openInNewTab(this)" data-link="https://fr3d-wm.github.io/build/?playbackPath=/recordings/waymo1.viser&initialCameraPosition=0,0,-3&initialCameraLookAt=0,0,0&initialCameraUp=0,-1,0&synchronizedVideoOverlay=/recordings/waymo1.mp4&baseSpeed=0.8">Open in New Tab for Better Visualization</button>
@@ -776,7 +776,7 @@
         </div><br>
     </section>
 
-    <section id="kitti" class="section dynamic-section">
+    <section id="kitti" class="section dynamic-section" role="tabpanel" aria-labelledby="nav2">
         <div class="container is-max-desktop">
             <div class="columns is-centered has-text-centered">
                 <div class="column is-full panel-style">
@@ -784,7 +784,7 @@
 
                     <p>Our method exhibits strong zero-shot generalization on KITTI.</p>
                     <br>
-                    <div id="wrapper" style="
+                    <div id="kitti-wrapper" style="
                     display: flex;
                     flex-wrap: nowrap;
                     justify-content: center;
@@ -792,7 +792,7 @@
                     gap: 2em;
                   ">
                         <div class="iframe-container">
-                        <iframe class="vframe"
+                        <iframe class="vframe" title="Interactive KITTI 3D reconstruction"
                             src="https://fr3d-wm.github.io/build/?playbackPath=/recordings/kitti1.viser&initialCameraPosition=0,0,-3&initialCameraLookAt=0,0,0&initialCameraUp=0,-1,0&baseSpeed=0.8"
                             loading="lazy"></iframe>
                             <button onclick="openInNewTab(this)" data-link="https://fr3d-wm.github.io/build/?playbackPath=/recordings/kitti1.viser&initialCameraPosition=0,0,-3&initialCameraLookAt=0,0,0&initialCameraUp=0,-1,0&synchronizedVideoOverlay=/recordings/kitti1.mp4&baseSpeed=0.8">Open in New Tab for Better Visualization</button>
@@ -823,7 +823,7 @@
         </div>
     </section>
 
-    <section id="nuscenes" class="section dynamic-section">
+    <section id="nuscenes" class="section dynamic-section" role="tabpanel" aria-labelledby="nav3">
         <div class="container is-max-desktop">
             <div class="columns is-centered has-text-centered">
                 <div class="column is-full panel-style">
@@ -831,7 +831,7 @@
 
                     <p>Our method exhibits strong zero-shot generalization on nuScenes.</p>
                     <br>
-                    <div id="wrapper" style="
+                    <div id="nuscenes-wrapper" style="
                     display: flex;
                     flex-wrap: nowrap;
                     justify-content: center;
@@ -839,7 +839,7 @@
                     gap: 2em;
                   ">
                         <div class="iframe-container">
-                        <iframe class="vframe"
+                        <iframe class="vframe" title="Interactive nuScenes 3D reconstruction"
                             src="https://fr3d-wm.github.io/build/?playbackPath=/recordings/nuscenes1.viser&initialCameraPosition=0,0,-3&initialCameraLookAt=0,0,0&initialCameraUp=0,-1,0&baseSpeed=0.8"
                             loading="lazy"></iframe>
                             <button onclick="openInNewTab(this)" data-link="https://fr3d-wm.github.io/build/?playbackPath=/recordings/nuscenes1.viser&initialCameraPosition=0,0,-3&initialCameraLookAt=0,0,0&initialCameraUp=0,-1,0&synchronizedVideoOverlay=/recordings/nuscenes1.mp4&baseSpeed=0.8">Open in New Tab for Better Visualization</button>
@@ -886,6 +886,7 @@
                             <br>
                             <div>
                                 <img src="https://fr3d-wm.github.io/static/images/qualitatives.png"
+                                    alt="Qualitative FR3D reconstruction results on nuScenes and KITTI"
                                     class="blend-img-background center-image" width="80%" loading="lazy" />
                             </div>
                             <br>
@@ -898,6 +899,7 @@
                             <br>
                             <div>
                                 <img src="https://fr3d-wm.github.io/static/images/turn.png"
+                                    alt="FR3D forecast of camera trajectory during a left turn"
                                     class="blend-img-background center-image" width="80%" loading="lazy" />
                             </div>
                             <br>
@@ -927,21 +929,23 @@
                         </p>
                     </div>
                     <div class="content has-text-centered">
-                        <h2 class="title is-4" id="analysis">Zero-Shot Results</h2>
+                        <h2 class="title is-4" id="zero-shot-results">Zero-Shot Results</h2>
                         <div class="content has-text-centered">
                             <p>
                                 FR3D exhibits strong zero-shot results on KITTI and nuScenes for depth and pose forecasting.
                             </p>
                         </div>
                         <div>
-                            <img src="https://fr3d-wm.github.io/static/images/quantitatives_zero_shot_depth_med.png" alt="Reconstruction"
+                            <img src="https://fr3d-wm.github.io/static/images/quantitatives_zero_shot_depth_med.png"
+                                alt="Quantitative zero-shot depth forecasting results on KITTI and nuScenes"
                                 class="blend-img-background center-image" width="80%" loading="lazy" />
                         </div>
                         <div>
-                            <img src="https://fr3d-wm.github.io/static/images/quantitatives_zero_shot_pose_sim.png" alt="Reconstruction"
+                            <img src="https://fr3d-wm.github.io/static/images/quantitatives_zero_shot_pose_sim.png"
+                                alt="Quantitative zero-shot pose forecasting results on KITTI and nuScenes"
                                 class="blend-img-background center-image" width="80%" loading="lazy" />
                         </div>
-                        <h2 class="title is-4" id="analysis">Static vs. Dynamic</h2>
+                        <h2 class="title is-4" id="static-dynamic-results">Static vs. Dynamic</h2>
                         <div class="content has-text-centered">
                             <p>
                                 We also evaluate FR3D's depth forecasting performance for static and dynamic regions against Copy Last and CUT3R-Foresight on the Waymo Open dataset.
@@ -950,11 +954,13 @@
                             </p>
                         </div>
                         <div>
-                            <img src="https://fr3d-wm.github.io/static/images/quantitatives_zero_shot_depth_med_static.png" alt="Reconstruction"
+                            <img src="https://fr3d-wm.github.io/static/images/quantitatives_zero_shot_depth_med_static.png"
+                                alt="Depth forecasting comparison for static regions on Waymo"
                                 class="blend-img-background center-image" width="80%" loading="lazy" />
                         </div>
                         <div>
-                            <img src="https://fr3d-wm.github.io/static/images/quantitatives_zero_shot_depth_med_dynamic.png" alt="Reconstruction"
+                            <img src="https://fr3d-wm.github.io/static/images/quantitatives_zero_shot_depth_med_dynamic.png"
+                                alt="Depth forecasting comparison for dynamic regions on Waymo"
                                 class="blend-img-background center-image" width="80%" loading="lazy" />
                         </div>
                     </div>
