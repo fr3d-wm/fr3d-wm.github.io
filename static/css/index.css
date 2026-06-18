@@ -52,7 +52,45 @@ body {
   }
   
   .publication-title {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 0;
       font-family: 'Google Sans', sans-serif;
+      font-weight: 600;
+      font-size: 2.35rem !important;
+      line-height: 1.15;
+  }
+
+  .publication-icon {
+      width: 80px;
+      max-width: 18vw;
+      height: auto;
+  }
+
+  .publication-title-text {
+      display: block;
+      max-width: none;
+      text-align: center;
+      white-space: nowrap;
+  }
+
+  @media (max-width: 768px) {
+      .publication-title {
+          gap: 0.65rem;
+          font-size: 1.65rem !important;
+          line-height: 1.2;
+      }
+
+      .publication-title-text {
+          white-space: normal;
+      }
+
+      .publication-icon {
+          width: 56px;
+      }
   }
   
   .publication-authors {
