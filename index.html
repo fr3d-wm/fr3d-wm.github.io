@@ -3,10 +3,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="description" content="A world model for dynamic 3D reconstruction operating on a pre-trained, feed-forward reconstruction model's latent space.">
+    <meta name="description" content="A world modeling approach for dynamic 3D reconstruction operating on a pre-trained, feed-forward reconstruction model's latent space.">
     <meta name="keywords" content="FR3D">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Future Dynamic 3D Reconstruction: A 3D World Model with Disentangled Ego-Motion</title>
+    <title>Future Dynamic 3D Reconstruction: Toward 3D World Modeling with Disentangled Ego-Motion</title>
 
     <link rel="icon" type="image/png" sizes="32x32" href="static/images/icon.png">
 
@@ -16,7 +16,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Future Dynamic 3D Reconstruction: A 3D World Model with Disentangled Ego-Motion">
     <meta name="twitter:description"
-        content="A world model for dynamic 3D reconstruction operating on a pre-trained, feed-forward reconstruction model's latent space.">
+        content="A world modeling approach for dynamic 3D reconstruction operating on a pre-trained, feed-forward reconstruction model's latent space.">
     <meta name="twitter:image" content="https://fr3d-wm.github.io/static/images/icon.png">
     <link href="https://fonts.googleapis.com/css?family=Google+Sans:400,600|Noto+Sans:400,600|Castoro:400,600"
         rel="stylesheet">
@@ -543,7 +543,7 @@
             <div class="column has-text-centered">
                 <h1 class="title is-2 publication-title">
                     <img class="publication-icon" src="https://fr3d-wm.github.io/static/images/icon.png" alt="" aria-hidden="true">
-                    <span class="publication-title-text">Future Dynamic 3D Reconstruction:<br>A 3D World Model with Disentangled Ego-Motion</span>
+                    <span class="publication-title-text">Future Dynamic 3D Reconstruction:<br>Toward 3D World Modeling with Disentangled Ego-Motion</span>
                 </h1>
 
             <div class="is-size-4 publication-authors">
@@ -621,13 +621,13 @@
                         <div class="notification is-centered is-info is-rounded"
                             style="text-align: center; padding-bottom: 5px; padding-top: 5px; background-color: #ffffff;">
                             <h6 style="text-align: center; color:rgb(0, 0, 0); font-size: 18px">
-                                <strong>TL;DR:</strong> A world model for dynamic 3D reconstruction operating on a pre-trained, feed-forward reconstruction model's latent space.
+                                <strong>TL;DR:</strong> A world modeling approach for dynamic 3D reconstruction operating on a pre-trained, feed-forward reconstruction model's latent space.
                             </h6>
                         </div>
                         <div>
                             <img src="https://fr3d-wm.github.io/static/images/teaser.png"
                                 alt="Overview of FR3D future dynamic 3D reconstruction results"
-                                class="blend-img-background center-image" width="80%" loading="lazy" />
+                                class="blend-img-background center-image" width="60%" loading="lazy" />
                         </div>
                     </div>
                 </div>
@@ -648,11 +648,11 @@
                     <h2 class="title is-3">Abstract</h2>
                     <div class="content has-text-justified">
                         <p>
-                            Forecasting the evolution of dynamic environments is crucial for autonomous agents.
-                            While generative world models have recently achieved high photorealism in 2D video synthesis by mixing ego-motion and environmental dynamics within the image plane, they exhibit physical inconsistencies, such as morphing or vanishing objects, especially over long time horizons.
-                            In this paper, we propose FR3D, a world model that predicts a persistent 3D latent representation for future dynamic 3D reconstruction.
+                            Forecasting the evolution of dynamic environments is crucial for autonomous agents. 
+                            While generative world models have achieved high photorealism in 2D video synthesis by mixing ego-motion and environmental dynamics within the image plane, they exhibit physical inconsistencies, such as morphing or vanishing objects, especially over long time horizons.
+                            In this paper, we propose FR3D, a world-modeling approach that predicts a persistent 3D latent representation for future dynamic 3D reconstruction.
                             Unlike prior works that treat the world as a sequence of image-based features, FR3D explicitly decouples the 3D evolution of the scene from the agent's trajectory, treating the inferred ego-motion as a latent proxy for action.
-                            This disentanglement resolves the ambiguities between self-motion and world-motion, ensuring geometric consistency into the future.
+                            This disentanglement resolves ambiguities between self-motion and world-motion, ensuring geometric consistency into the future.
                             Furthermore, we introduce a teacher-student distillation strategy that leverages the spatial "common sense" of off-the-shelf foundation models, leading to robust zero-shot generalization.
                             Extensive experiments demonstrate FR3D's strong performance for future dynamic 3D reconstruction from monocular observations across multiple datasets, even 2 seconds into the future.
                         </p>
@@ -665,20 +665,20 @@
     <section class="section">
         <div class="container is-max-desktop">
             <div class="columns is-centered has-text-centered">
-                <div class="column is-four-fifths">
+                <div class="column is-full">
                     <h2 class="title is-3">Method Overview</h2>
                     <div class="content has-text-centered">
                         <div>
                             <img src="https://fr3d-wm.github.io/static/images/framework.png"
                                 alt="Overview of the FR3D architecture and forecasting pipeline"
-                                class="blend-img-background center-image" width="80%" loading="lazy" />
+                                class="blend-img-background center-image" width="100%" loading="lazy" />
                         </div>
                         <br>
                         <div class="content has-text-justified">
                             <p>
                                 Our approach targets predicting how a 3D scene evolves over time and forecasting the most likely camera motion. Displayed above, we propose a world modeling approach for dynamic 3D reconstruction.
                                 Our key idea is to learn how to temporally operate in the latent space of a pre-trained, feed-forward 3D reconstruction model, thereby effectively disentangling camera motion from the reconstructed 3D scene structure and potentially induced motion.
-                                For that, we propose an autoregressive teacher-student distillation training strategy that yields the first 3D world model for dynamic 3D reconstruction learning to propagate scene states and agent poses within a unified 3D latent space.
+                                For that, we propose an autoregressive teacher-student distillation training strategy that yields a world modeling approach for dynamic 3D reconstruction learning to propagate scene states and agent poses within a unified 3D latent space.
                             </p>
                         </div>
 
@@ -872,7 +872,7 @@
     <section class="section">
         <div class="container is-max-desktop">
             <div class="columns is-centered has-text-centered">
-                <div class="column is-four-fifths">
+                <div class="column is-full">
                     <h2 class="title is-3">More Qualitative Results</h2>
                     <div class="content has-text-centered">
                         <div class="content has-text-justified">
@@ -886,7 +886,7 @@
                             <div>
                                 <img src="https://fr3d-wm.github.io/static/images/qualitatives.png"
                                     alt="Qualitative FR3D reconstruction results on nuScenes and KITTI"
-                                    class="blend-img-background center-image" width="80%" loading="lazy" />
+                                    class="blend-img-background center-image" width="100%" loading="lazy" />
                             </div>
                             <br>
                             <p>
@@ -899,7 +899,7 @@
                             <div>
                                 <img src="https://fr3d-wm.github.io/static/images/turn.png"
                                     alt="FR3D forecast of camera trajectory during a left turn"
-                                    class="blend-img-background center-image" width="80%" loading="lazy" />
+                                    class="blend-img-background center-image" width="100%" loading="lazy" />
                             </div>
                             <br>
                             <p>
@@ -920,7 +920,7 @@
     <section class="section">
         <div class="container is-max-desktop">
             <div class="columns is-centered has-text-centered">
-                <div class="column is-four-fifths">
+                <div class="column is-full">
                     <h2 class="title is-3">Quantitative Results</h2>
                     <div class="content has-text-centered">
                         <p>
@@ -928,21 +928,17 @@
                         </p>
                     </div>
                     <div class="content has-text-centered">
-                        <h2 class="title is-4" id="zero-shot-results">Zero-Shot Results</h2>
-                        <div class="content has-text-centered">
-                            <p>
-                                FR3D exhibits strong zero-shot results on KITTI and nuScenes for depth and pose forecasting.
-                            </p>
-                        </div>
+                        <h2 class="title is-4" id="zero-shot-results">Zero-Shot Results on KITTI</h2>
                         <div>
-                            <img src="https://fr3d-wm.github.io/static/images/quantitatives_zero_shot_depth_med.png"
+                            <img src="https://fr3d-wm.github.io/static/images/quantitatives_kitti.jpg"
                                 alt="Quantitative zero-shot depth forecasting results on KITTI and nuScenes"
-                                class="blend-img-background center-image" width="80%" loading="lazy" />
+                                class="blend-img-background center-image" width="100%" loading="lazy" />
                         </div>
+                        <h2 class="title is-4" id="zero-shot-results">Zero-Shot Results on nuScenes</h2>
                         <div>
-                            <img src="https://fr3d-wm.github.io/static/images/quantitatives_zero_shot_pose_sim.png"
+                            <img src="https://fr3d-wm.github.io/static/images/quantitatives_nuscenes.jpg"
                                 alt="Quantitative zero-shot pose forecasting results on KITTI and nuScenes"
-                                class="blend-img-background center-image" width="80%" loading="lazy" />
+                                class="blend-img-background center-image" width="100%" loading="lazy" />
                         </div>
                         <h2 class="title is-4" id="static-dynamic-results">Static vs. Dynamic</h2>
                         <div class="content has-text-centered">
@@ -953,14 +949,9 @@
                             </p>
                         </div>
                         <div>
-                            <img src="https://fr3d-wm.github.io/static/images/quantitatives_zero_shot_depth_med_static.png"
-                                alt="Depth forecasting comparison for static regions on Waymo"
-                                class="blend-img-background center-image" width="80%" loading="lazy" />
-                        </div>
-                        <div>
-                            <img src="https://fr3d-wm.github.io/static/images/quantitatives_zero_shot_depth_med_dynamic.png"
-                                alt="Depth forecasting comparison for dynamic regions on Waymo"
-                                class="blend-img-background center-image" width="80%" loading="lazy" />
+                            <img src="https://fr3d-wm.github.io/static/images/quantitatives_static_vs_dynamic_waymo.jpg"
+                                alt="Depth forecasting comparison for static and dynamic regions on Waymo"
+                                class="blend-img-background center-image" width="100%" loading="lazy" />
                         </div>
                     </div>
                 </div>
@@ -998,7 +989,7 @@
                 </button>
 
                 <pre class="static-bib"><code>@inproceedings{morbitzer_evers2026fr3d,
-                    title     = {Future Dynamic 3D Reconstruction: A 3D World Model with Disentangled Ego-Motion},
+                    title     = {Future Dynamic 3D Reconstruction: Toward 3D World Modeling with Disentangled Ego-Motion},
                     author    = {Morbitzer, Nils and Evers, Jonathan and Savkin, Artem and Stauner, Thomas and Navab, Nassir and Tombari, Federico and Gasperini, Stefano},
                     booktitle = {Proceedings of the 43rd International Conference on Machine Learning},
                     series    = {Proceedings of Machine Learning Research},
