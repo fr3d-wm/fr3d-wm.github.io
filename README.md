@@ -5,7 +5,7 @@ This is the repository that contains source code for the [FR3D website](https://
 If you find FR3D useful for your work, please cite:
 ```
 @inproceedings{morbitzer_evers2026fr3d,
-  title={Future Dynamic 3D Reconstruction: A 3D World Model with Disentangled Ego-Motion},
+  title={Future Dynamic 3D Reconstruction: Toward 3D World Modeling with Disentangled Ego-Motion},
   author={Morbitzer, Nils and Evers, Jonathan and Savkin, Artem and Stauner, Thomas and Navab, Nassir and Tombari, Federico and Gasperini, Stefano},
   booktitle={ICML},
   year={2026},
